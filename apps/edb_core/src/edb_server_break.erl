@@ -1295,7 +1295,7 @@ no reasons remain to keep it. Each reason may have some associated metadata.
         % Line-breakpoint set by the user
         line_breakpoint => [],
 
-        % Functoion-breakpoint set by the user
+        % Function-breakpoint set by the user
         fun_breakpoint => mfa(),
 
         %% Stepping-breakpoint. For each such breakpoint, there are only certain
