@@ -17,8 +17,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
-
 %% CT callbacks
 -export([all/0, groups/0]).
 
@@ -37,6 +35,8 @@
 -export([test_compile_guard_reports_illegal_guard_in_right_position/1]).
 -export([test_compile_guard_reports_parsing_errors_using_given_location/1]).
 -export([test_compile_guard_reports_compilation_errors_using_given_location/1]).
+
+-include_lib("assert/include/assert.hrl").
 
 all() ->
     [

@@ -19,9 +19,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
--include_lib("edb/include/edb_dap.hrl").
-
 %% CT callbacks
 -export([
     suite/0,
@@ -46,6 +43,9 @@
     test_terminates_when_node_goes_down/1,
     test_terminates_when_node_goes_down_while_configuring/1
 ]).
+
+-include_lib("assert/include/assert.hrl").
+-include_lib("edb/include/edb_dap.hrl").
 
 suite() ->
     [].

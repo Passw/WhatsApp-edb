@@ -36,6 +36,9 @@
 -export([raise/2, raise/3, invariant_violation/1]).
 
 -export_type([call_request/0]).
+-export_type([start_error/0]).
+-export_type([add_substitute_error/0]).
+-export_type([remove_substitute_error/0]).
 
 %%--------------------------------------------------------------------
 %% Types
@@ -47,13 +50,10 @@
 
 -type start_opts() :: [].
 
--export_type([start_error/0]).
 -type start_error() :: unsupported | failed_to_register.
 
--export_type([add_substitute_error/0]).
 -type add_substitute_error() :: already_has_breakpoints | already_substituted | is_already_a_substitute.
 
--export_type([remove_substitute_error/0]).
 -type remove_substitute_error() :: not_a_substitute | has_dependent_substitute.
 
 -record(state, {

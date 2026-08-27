@@ -17,9 +17,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
--include_lib("common_test/include/ct.hrl").
-
 %% CT callbacks
 -export([all/0, groups/0, suite/0]).
 -export([init_per_testcase/2, end_per_testcase/2]).
@@ -59,6 +56,9 @@
 -export([test_error_if_substitute_is_already_a_substitute/1]).
 -export([test_error_if_try_removing_intermediate_substitute/1]).
 -export([test_error_if_try_removing_non_existent_substitute/1]).
+
+-include_lib("assert/include/assert.hrl").
+-include_lib("common_test/include/ct.hrl").
 
 %% erlfmt:ignore
 suite() -> [

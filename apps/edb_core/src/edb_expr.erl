@@ -30,19 +30,22 @@ the context of a process stack-frame.
 %% -------------------------------------------------------------------
 %% Types
 %% -------------------------------------------------------------------
+-export_type([compiled_expr/0]).
+-export_type([compile_opts/0]).
+-export_type([source_code/0]).
+-export_type([compile_error/0]).
+
 -type compiled_expr() :: #{
     module := module(),
     entrypoint := atom(),
     code := binary()
 }.
--export_type([compiled_expr/0]).
 
 -type compile_opts() :: #{
     free_vars := [binary()],
     start_line => pos_integer(),
     start_col => pos_integer()
 }.
--export_type([compile_opts/0]).
 
 -type source_code() :: binary().
 -type generated_source_code() :: #{
@@ -51,10 +54,8 @@ the context of a process stack-frame.
     body_start := {Line :: pos_integer(), Column :: pos_integer()},
     footer := io_lib:chars()
 }.
--export_type([source_code/0]).
 
 -type compile_error() :: erl_scan:error_info() | erl_parse:error_info() | erl_lint:error_info().
--export_type([compile_error/0]).
 
 %% -------------------------------------------------------------------
 %% Public API

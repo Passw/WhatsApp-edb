@@ -18,15 +18,10 @@
 -oncall("whatsapp_server_devx").
 -compile(warn_missing_spec_all).
 
--include_lib("common_test/include/ct.hrl").
-
 %% Compiling test modules
--export_type([module_spec/0, compile_opts/0]).
 -export([compile_modules/3, compile_module/3]).
 
 %% Peer nodes
--export_type([peer/0, start_peer_node_opts/0, start_peer_result/0]).
--export_type([start_peer_no_dist_opts/0, start_peer_no_dist_result/0]).
 -export([start_peer_node/2, start_peer_no_dist/2, stop_peer/1, stop_all_peers/0]).
 -export([random_node/1, random_node/2]).
 -export([random_srcdir/1]).
@@ -39,6 +34,12 @@
 
 %% Debugger node utils
 -export([start_debugger_node/1, on_debugger_node/2]).
+
+-export_type([module_spec/0, compile_opts/0]).
+-export_type([peer/0, start_peer_node_opts/0, start_peer_result/0]).
+-export_type([start_peer_no_dist_opts/0, start_peer_no_dist_result/0]).
+
+-include_lib("common_test/include/ct.hrl").
 
 %% --------------------------------------------------------------------
 %% Compiling test modules

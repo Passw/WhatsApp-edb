@@ -57,6 +57,8 @@ This module tests the DAP server end-to-end.
     handle_info/2
 ]).
 
+-export_type([client/0]).
+
 -type awaitable_key() :: {event, edb_dap:event_type()} | {reverse_request, edb_dap:command()}.
 -type awaitable() :: edb_dap:event() | edb_dap:request().
 
@@ -69,7 +71,6 @@ This module tests the DAP server end-to-end.
     received := #{awaitable_key() => [awaitable()]}
 }.
 
--export_type([client/0]).
 -type client() :: pid().
 
 -type request_no_seq() :: #{type := request, command := edb_dap:command(), arguments => edb_dap:arguments()}.

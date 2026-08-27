@@ -40,6 +40,10 @@ the debuggee.
 -export([slice_list/2]).
 -export([format_bytes/1]).
 
+-export_type([callback/1]).
+-export_type([scope/0, variable/0, evaluation_result/0, structure/0, accessor/0, eval_name/0]).
+-export_type([window/0]).
+
 %% Size constants for byte formatting
 -define(BYTES_PER_KB, 1024).
 -define(BYTES_PER_MB, (?BYTES_PER_KB * ?BYTES_PER_KB)).
@@ -54,7 +58,6 @@ the debuggee.
         function := stack_frame_vars_fun(Result),
         deps := [module()]
     }.
--export_type([callback/1]).
 
 -type stack_frame_vars_fun(Result) :: fun((Vars :: edb:stack_frame_vars()) -> Result).
 
@@ -97,9 +100,6 @@ the debuggee.
 
 -type process_info_item() ::
     dictionary | heap_size | label | messages | registered_name | memory | stack_size | total_heap_size.
-
--export_type([scope/0, variable/0, evaluation_result/0, structure/0, accessor/0, eval_name/0]).
--export_type([window/0]).
 
 % -----------------------------------------------------------------------------
 % Running

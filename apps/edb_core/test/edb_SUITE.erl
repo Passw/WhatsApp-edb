@@ -17,8 +17,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
-
 %% CT callbacks
 -export([all/0, groups/0, suite/0]).
 -export([init_per_suite/1, end_per_suite/1]).
@@ -128,6 +126,8 @@
 -export([test_eval_reports_exceptions/1]).
 -export([test_eval_reports_being_killed/1]).
 -export([test_eval_without_context/1]).
+
+-include_lib("assert/include/assert.hrl").
 
 %% erlfmt:ignore
 suite() ->

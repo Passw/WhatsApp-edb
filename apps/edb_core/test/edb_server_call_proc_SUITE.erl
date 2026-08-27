@@ -18,8 +18,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
-
 %% Test server callbacks
 -export([
     all/0,
@@ -36,6 +34,8 @@
     test_safe_send_recv_timeout/1,
     test_code_where_is_file_works/1
 ]).
+
+-include_lib("assert/include/assert.hrl").
 
 all() ->
     [

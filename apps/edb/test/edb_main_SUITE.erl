@@ -17,10 +17,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
--include_lib("common_test/include/ct.hrl").
--include_lib("kernel/include/file.hrl").
-
 %% Test server callbacks
 -export([
     suite/0,
@@ -34,6 +30,10 @@
     escript_executable/1,
     escript_dap/1
 ]).
+
+-include_lib("assert/include/assert.hrl").
+-include_lib("common_test/include/ct.hrl").
+-include_lib("kernel/include/file.hrl").
 
 -define(EDB, "edb").
 

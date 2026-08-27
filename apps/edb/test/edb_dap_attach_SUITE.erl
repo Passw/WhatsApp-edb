@@ -19,8 +19,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("common_test/include/ct.hrl").
-
 %% CT callbacks
 -export([
     suite/0,
@@ -34,6 +32,8 @@
 -export([test_fails_to_attach_if_node_is_down/1]).
 -export([test_fails_to_attach_if_wrong_cookie_is_given/1]).
 -export([test_validates_input/1]).
+
+-include_lib("common_test/include/ct.hrl").
 
 suite() ->
     [].

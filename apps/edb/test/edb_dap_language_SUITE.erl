@@ -17,8 +17,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
-
 %% CT callbacks
 -export([
     all/0,
@@ -34,6 +32,8 @@
 
 %% edb_dap_language callbacks
 -export([init/0, source_to_modules/3]).
+
+-include_lib("assert/include/assert.hrl").
 
 all() ->
     [

@@ -49,6 +49,8 @@
 %% Types
 %% --------------------------------------------------------------------
 
+-export_type([breakpoints/0, vm_module/0]).
+
 -type line() :: edb:line().
 
 -type user_line_breakpoint() :: {module(), line()}.
@@ -73,8 +75,6 @@
     | {badkey, vm_module()}
     | {badkey, Line :: line()}
     | timeout_loading_module.
-
--export_type([breakpoints/0, vm_module/0]).
 
 -record(breakpoints, {
     %% TODO(T198738599): we should somehow keep track of the identity

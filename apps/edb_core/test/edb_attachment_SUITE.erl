@@ -18,9 +18,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
--include_lib("common_test/include/ct.hrl").
-
 %% Test server callbacks
 -export([
     suite/0,
@@ -87,6 +84,9 @@
 
     test_subscribing_before_attaching_works/1
 ]).
+
+-include_lib("assert/include/assert.hrl").
+-include_lib("common_test/include/ct.hrl").
 
 %% erlfmt:ignore
 suite() ->

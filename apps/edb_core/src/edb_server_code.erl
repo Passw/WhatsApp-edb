@@ -32,13 +32,14 @@
 %% --------------------------------------------------------------------
 
 -export_type([var_debug_info/0]).
+-export_type([call_target/0]).
+-export_type([abstract_form/0, abstract_code/0]).
 
 -type var_name() :: binary().
 
 -type var_debug_info() ::
     {x, non_neg_integer()} | {y, non_neg_integer()} | {value, term()}.
 
--export_type([call_target/0]).
 -type call_target() ::
     % remote function
     {M :: module() | var_name(), F :: atom() | var_name(), A :: arity()}
@@ -47,7 +48,6 @@
     % function reference
     | var_name().
 
--export_type([abstract_form/0, abstract_code/0]).
 -type abstract_form() :: erl_parse:abstract_form() | erl_parse:form_info().
 -type abstract_code() :: [abstract_form()].
 

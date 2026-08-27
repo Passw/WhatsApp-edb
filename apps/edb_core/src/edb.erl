@@ -53,15 +53,26 @@ The (new!) Erlang debugger
 %% -------------------------------------------------------------------
 %% Types
 %% -------------------------------------------------------------------
--type line() :: pos_integer().
 -export_type([line/0]).
-
 -export_type([bootstrap_failure/0]).
+-export_type([breakpoint_info/0]).
+-export_type([add_breakpoint_error/0, add_function_breakpoint_error/0]).
+-export_type([set_breakpoints_result/0]).
+-export_type([set_function_breakpoints_result/0]).
+-export_type([step_error/0, step_in_error/0, call_target_error/0]).
+-export_type([procs_spec/0]).
+-export_type([process_info_field/0, process_info/0, process_status/0, exclusion_reason/0]).
+-export_type([frame_id/0, stack_frame/0, stack_frame_vars/0, value/0, catch_handler/0]).
+-export_type([eval_error/0]).
+-export_type([event_envelope/1, event_subscription/0]).
+-export_type([event/0, resumed_event/0, paused_event/0, reverse_attachment_event/0]).
+
+-type line() :: pos_integer().
+
 -type bootstrap_failure() ::
     {no_debugger_support, {missing, erl_debugger} | not_enabled}
     | {module_injection_failed, module(), Reason :: term()}.
 
--export_type([breakpoint_info/0]).
 -type breakpoint_info() ::
     #{
         type := line,
@@ -73,8 +84,6 @@ The (new!) Erlang debugger
         module := module(),
         function := mfa()
     }.
-
--export_type([add_breakpoint_error/0, add_function_breakpoint_error/0]).
 
 -doc """
 A breakpoint may not be added for various reasons:
@@ -112,13 +121,10 @@ A function-breakpoint may not be added for various reasons:
     | {badkey, mfa()}
     | timeout_loading_module.
 
--export_type([set_breakpoints_result/0]).
 -type set_breakpoints_result() :: [{line(), Result :: ok | {error, add_breakpoint_error()}}].
 
--export_type([set_function_breakpoints_result/0]).
 -type set_function_breakpoints_result() :: [{mfa(), Result :: ok | {error, add_function_breakpoint_error()}}].
 
--export_type([step_error/0, step_in_error/0, call_target_error/0]).
 -type step_error() ::
     not_paused
     | {cannot_breakpoint, module()}.
@@ -133,10 +139,8 @@ A function-breakpoint may not be added for various reasons:
     | {function_not_found, mfa()}
     | {timeout_loading_module, module()}.
 
--export_type([procs_spec/0]).
 -type procs_spec() :: {proc, pid() | atom()} | {application, atom()} | {except, pid()}.
 
--export_type([process_info_field/0, process_info/0, process_status/0, exclusion_reason/0]).
 -type process_info_field() ::
     application
     | current_bp
@@ -172,7 +176,6 @@ A function-breakpoint may not be added for various reasons:
     | excluded_regname
     | system_component.
 
--export_type([frame_id/0, stack_frame/0, stack_frame_vars/0, value/0, catch_handler/0]).
 -type frame_id() :: non_neg_integer().
 -type stack_frame() :: #{
     id := frame_id(),
@@ -188,14 +191,11 @@ A function-breakpoint may not be added for various reasons:
 -type value() :: {value, term()} | {too_large, Size :: pos_integer(), Max :: non_neg_integer()}.
 -type catch_handler() :: {'catch', {mfa(), {line, line() | undefined}}}.
 
--export_type([eval_error/0]).
 -type eval_error() ::
     timeout
     | {exception, #{class := error | exit | throw, reason := term(), stacktrace := erlang:stacktrace()}}
     | {killed, Reason :: term()}.
 
--export_type([event_envelope/1, event_subscription/0]).
--export_type([event/0, resumed_event/0, paused_event/0, reverse_attachment_event/0]).
 -type event_envelope(Event) :: {edb_event, event_subscription(), Event}.
 -type event_subscription() :: edb_events:subscription().
 -type event() ::

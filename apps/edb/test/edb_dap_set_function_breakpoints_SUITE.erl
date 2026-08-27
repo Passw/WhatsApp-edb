@@ -19,8 +19,6 @@
 
 -oncall("whatsapp_server_devx").
 
--include_lib("assert/include/assert.hrl").
-
 %% CT callbacks
 -export([
     suite/0,
@@ -37,6 +35,8 @@
     test_error_invalid_name/1,
     test_error_function_not_found/1
 ]).
+
+-include_lib("assert/include/assert.hrl").
 
 suite() ->
     [].
